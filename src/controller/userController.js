@@ -1,10 +1,9 @@
-import { User } from '../model/user.js'
+import { User } from "../model/user.js";
 
-export class userController{
+export class UserController {
+  constructor() {}
 
-  constructor(){}
-
-  static async auth(email, password){ 
-    return await User.getUserByEmailAndPassword(email, password)
+  static async auth(email, password) {
+    return await User.getUserByEmailAndPassword(email, password);
   }
 }

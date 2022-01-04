@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Create Course</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -30,72 +30,7 @@
   <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-      <!-- Sidebar -->
-      <ul
-        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
-        >
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fab fa-forumbee"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">Bee Portal</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="./dashboard.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a
-          >
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Course Menu -->
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Courses</span>
-          </a>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="">Add New Course</a>
-              <a class="collapse-item" href="">Update Course</a>
-              <a class="collapse-item" href="">Delete Course</a>
-            </div>
-          </div>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block" />
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-          <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-      </ul>
-      <!-- End of Sidebar -->
+      <div class="header"></div>
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
@@ -441,35 +376,119 @@
             <div class="row">
               <div class="container">
                 <hr />
+                <div class="form-group">
+                  <label for="">Course Id</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-user"
+                    id="courseId"
+                    placeholder="ex. COMP60930001"
+                  ></input>
+                </div>
                 <div class="user">
                   <div class="form-group row">
                     <div class="col-sm-8 mb-3 mb-sm-0">
-                      <input
-                        type="name"
-                        class="form-control form-control-user"
-                        id="courseName"
-                        placeholder="Course Name"
-                      />
+                      <div>
+                        <label for="courseName">Course Name</label>
+                        <input
+                          type="name"
+                          class="form-control form-control-user"
+                          id="courseName"
+                          placeholder="ex. Data Structures"
+                        />
+                      </div>
                     </div>
                     <div class="col-sm-4">
-                      <input
-                        type="number"
-                        class="form-control form-control-user"
-                        id="creditNumber"
-                        placeholder="SKU"
-                      />
+                      <div>
+                        <label for="">SKU</label>
+                        <input
+                          type="number"
+                          class="form-control form-control-user"
+                          id="creditNumber"
+                          placeholder="ex. 4"
+                        />
+                      </div>
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="">Course Description</label>
                     <textarea
                       rows="5"
                       type="text"
                       class="form-control form-control-user"
-                      id="courseName"
-                      placeholder="Course Description"
+                      id="courseDesc"
                     ></textarea>
                   </div>
-                  <a href="" class="btn btn-primary btn-user btn-block">
+                  <div class="form-group learning ">
+                    <label for="">Leaning Outcomes</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user LO"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addLO"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group learningCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user LO"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group strategies">
+                    <label for="">Strategies</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user strat"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addStrategies"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group strategiesCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user strat"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group textbook">
+                    <label for="">Textbooks</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user txt"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addText"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group textbookCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user txt"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="btn btn-primary btn-user btn-block" id="createCourse">
                     Create Course
                   </a>
                 </div>
@@ -541,12 +560,16 @@
 
     <!-- Script to set values to view -->
     <script type="module">
-      window.onload = () => {};
+      window.onload = () => {
+        var name = document.getElementById("username");
+        name.innerHTML = localStorage.getItem("username");
+      };
     </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/header.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -554,11 +577,57 @@
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+    <!-- Script to set values to view -->
+    <script type="module">
+      import { inputFacade } from "../facade/inputFacade.js";
+
+      window.onload = () => {
+        var name = document.getElementById("username");
+        name.innerHTML = localStorage.getItem("username");
+      };
+
+      document
+        .getElementById("createCourse")
+        .addEventListener("click", async () => {
+          console.log("testa");
+          await new inputFacade().createCourse();
+        });
+    </script>
 
     <!-- Page level custom scripts -->
-    <script src="../assets/js/demo/chart-area-demo.js"></script>
-    <script src="../assets/js/demo/chart-pie-demo.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".addLO").click(function () {
+          var fieldHTML =
+            '<div class="input-group learning">' +
+            $(".learningCopy").html() +
+            "</div>";
+          $("body").find(".learning:last").after(fieldHTML);
+        });
+
+        $(".addStrategies").click(function () {
+          var fieldHTML =
+            '<div class="input-group strategies">' +
+            $(".strategiesCopy").html() +
+            "</div>";
+          $("body").find(".strategies:last").after(fieldHTML);
+        });
+
+        $(".addText").click(function () {
+          var fieldHTML =
+            '<div class="input-group textbook">' +
+            $(".textbookCopy").html() +
+            "</div>";
+          $("body").find(".textbook:last").after(fieldHTML);
+        });
+
+        //remove fields group
+        $("body").on("click", ".remove", function () {
+          $(this).parents(".learning").remove();
+          $(this).parents(".strategies").remove();
+          $(this).parents(".textbook").remove();
+        });
+      });
+    </script>
   </body>
 </html>

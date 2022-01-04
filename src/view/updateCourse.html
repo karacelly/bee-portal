@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Bee Portal Dashboard</title>
+    <title>Update Course</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -363,7 +363,140 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Update Course</h1>
+            </div>
 
+            <!-- Content Row -->
+
+            <div class="row">
+              <div class="container">
+                <hr />
+                <div class="form-group">
+                  <label for="">Course Id</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-user"
+                    id="courseId"
+                    placeholder="ex. COMP60930001"
+                    disabled
+                  ></input>
+                </div>
+                <div class="user">
+                  <div class="form-group row">
+                    <div class="col-sm-8 mb-3 mb-sm-0">
+                      <div>
+                        <label for="courseName">Course Name</label>
+                        <input
+                          type="name"
+                          class="form-control form-control-user"
+                          id="courseName"
+                          placeholder="ex. Data Structures"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div>
+                        <label for="">SKU</label>
+                        <input
+                          type="number"
+                          class="form-control form-control-user"
+                          id="creditNumber"
+                          placeholder="ex. 4"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Course Description</label>
+                    <textarea
+                      rows="5"
+                      type="text"
+                      class="form-control form-control-user"
+                      id="courseDesc"
+                    ></textarea>
+                  </div>
+                  <div class="form-group learning" id="loupdate">
+                    <label for="">Leaning Outcomes</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user LO"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addLO"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group learningCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user LO"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group strategies">
+                    <label for="">Strategies</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user strat"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addStrategies"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group strategiesCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user strat"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group textbook">
+                    <label for="">Textbooks</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user txt"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addText"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group textbookCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user txt"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="btn btn-primary btn-user btn-block" id="updateCourse">
+                    Update Course
+                  </a>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -444,5 +577,118 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Script to set values to view -->
+    <script type="module">
+      import { inputFacade } from "../facade/inputFacade.js";
+      import { CourseController } from "../controller/courseController.js"
+
+      $(document).ready(function () {
+        window.onload = () => {
+          var name = document.getElementById("username");
+          name.innerHTML = localStorage.getItem("username");
+          
+          const urlQuery = new URLSearchParams(window.location.search);
+          var course = CourseController.getCourse(urlQuery.get("courseId"))
+          course.then((result) => {
+            console.log(result)
+            let cid = document.getElementById("courseId");
+            let cname = document.getElementById("courseName")
+            let csku = document.getElementById("creditNumber")
+            let cdesc = document.getElementById("courseDesc")
+  
+            cid.setAttribute("value", result.courseId)
+            cname.setAttribute("value", result.name)
+            csku.setAttribute("value", result.credit)
+            cdesc.innerHTML= result.courseDesc
+            
+            for(let i=1; i<result.learningOutcomes.length; i++){
+              var fieldHTML =
+                '<div class="input-group learning">' +
+                $(".learningCopy").html() +
+                "</div>";
+              $("body").find(".learning:last").after(fieldHTML);
+            }
+
+            let loInput = document.getElementsByClassName("LO");
+            for(let i=0; i<loInput.length; i++){
+              loInput[i].value = result.learningOutcomes[i]
+            }
+
+            for(let i=1; i<result.strategies.length; i++){
+              var fieldHTML =
+                '<div class="input-group strategies">' +
+                $(".strategiesCopy").html() +
+                "</div>";
+              $("body").find(".strategies:last").after(fieldHTML);
+            }
+
+            let stratInput = document.getElementsByClassName("strat");
+            for(let i=0; i<stratInput.length; i++){
+              stratInput[i].value = result.strategies[i]
+            }
+
+            for(let i=1; i<result.textbooks.length; i++){
+              var fieldHTML =
+                '<div class="input-group textbook">' +
+                $(".textbookCopy").html() +
+                "</div>";
+              $("body").find(".textbook:last").after(fieldHTML);
+            }
+
+            let txtInput = document.getElementsByClassName("txt");
+            for(let i=0; i<txtInput.length; i++){
+              txtInput[i].value = result.textbooks[i]
+            }
+  
+          }).catch((err) => {});
+        };
+
+        document
+          .getElementById("updateCourse")
+          .addEventListener("click", async () => {
+            console.log("test");
+            await new inputFacade().updateCourse();
+          });
+      });
+
+    </script>
+
+    <!-- Page level custom scripts -->
+    <script>
+      $(document).ready(function () {
+
+        $(".addLO").click(function () {
+          var fieldHTML =
+            '<div class="input-group learning">' +
+            $(".learningCopy").html() +
+            "</div>";
+          $("body").find(".learning:last").after(fieldHTML);
+        });
+
+        $(".addStrategies").click(function () {
+          var fieldHTML =
+            '<div class="input-group strategies">' +
+            $(".strategiesCopy").html() +
+            "</div>";
+          $("body").find(".strategies:last").after(fieldHTML);
+        });
+
+        $(".addText").click(function () {
+          var fieldHTML =
+            '<div class="input-group textbook">' +
+            $(".textbookCopy").html() +
+            "</div>";
+          $("body").find(".textbook:last").after(fieldHTML);
+        });
+
+        //remove fields group
+        $("body").on("click", ".remove", function () {
+          $(this).parents(".learning").remove();
+          $(this).parents(".strategies").remove();
+          $(this).parents(".textbook").remove();
+        });
+      });
+    </script>
   </body>
 </html>

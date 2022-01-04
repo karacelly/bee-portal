@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Bee Portal Dashboard</title>
+    <title>Update Curriculum</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -363,7 +363,86 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Update Curriculum</h1>
+            </div>
 
+            <!-- Content Row -->
+
+            <div class="row">
+              <div class="container">
+                <hr />
+                <div class="user">
+                  <div class="form-group row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                      <div>
+                        <label for="majorId">Major Id</label>
+                        <input
+                          type="name"
+                          class="form-control form-control-user"
+                          id="majorId"
+                          placeholder="ex. CS"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div>
+                        <label for="">Semester</label>
+                        <input
+                          type="number"
+                          class="form-control form-control-user"
+                          id="semester"
+                          placeholder="ex. 2"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div>
+                        <label for="">Total Credits</label>
+                        <input
+                          type="number"
+                          class="form-control form-control-user"
+                          id="totalCreds"
+                          placeholder="ex. 20"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group courses ">
+                    <label for="">Courses</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user courseList"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-success addLO"><i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group coursesCopy" style="display: none;">
+                      <input
+                        type="text"
+                        class="form-control form-control-user courseList"
+                      ></input>
+                      <div class="input-group-addon ml-3"> 
+                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="btn btn-primary btn-user btn-block" id="createCurr">
+                    Update Curriculum
+                  </a>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -444,5 +523,71 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Script to set values to view -->
+    <script type="module">
+      import { inputFacade } from "../facade/inputFacade.js";
+      import { CurriculumController } from "../controller/curriculumController.js"
+
+      $(document).ready(function () {
+        window.onload = () => {
+          var name = document.getElementById("username");
+          name.innerHTML = localStorage.getItem("username");
+        };
+
+        const urlQuery = new URLSearchParams(window.location.search);
+        var curriculum = CurriculumController.getCurriculum(urlQuery.get("curriculumId"))
+        curriculum.then((result) => {
+          console.log(result)
+
+          let majorId = document.getElementById("majorId");
+          let semester = document.getElementById("semester");
+          let totalCreds = document.getElementById("totalCreds");
+
+          majorId.setAttribute("value", result.majorId)
+          semester.setAttribute("value", result.semester)
+          totalCreds.setAttribute("value", result.totalCreds)
+
+          for(let i=1; i<result.courses.length; i++){
+            var fieldHTML =
+              '<div class="input-group courses">' +
+              $(".coursesCopy").html() +
+              "</div>";
+            $("body").find(".courses:last").after(fieldHTML);
+            }
+
+            let cInput = document.getElementsByClassName("courseList");
+            for(let i=0; i<cInput.length; i++){
+              cInput[i].value = result.courses[i]
+            }
+        })
+
+        document
+          .getElementById("createCurr")
+          .addEventListener("click", async () => {
+            console.log("test");
+            await new inputFacade().updateCurriculum();
+          });
+      })
+      
+    </script>
+
+    <!-- Page level custom scripts -->
+    <script>
+      $(document).ready(function () {
+        $(".addLO").click(function () {
+          var fieldHTML =
+            '<div class="input-group courses">' +
+            $(".coursesCopy").html() +
+            "</div>";
+          $("body").find(".courses:last").after(fieldHTML);
+        });
+
+        //remove fields group
+        $("body").on("click", ".remove", function () {
+          $(this).parents(".courses").remove();
+        });
+      });
+    </script>
   </body>
 </html>
