@@ -336,6 +336,11 @@
               <header class="section-header d-flex justify-content-start ml-5">
                 <h3 class="m-0 font-weight-bold text-primary">Forum Thread</h3>
               </header>
+              <div>
+                <header class="section-header d-flex justify-content-start">
+                  <h6 id="forum-publicity" class="m-3"></h6>
+                </header>
+              </div>
               <div
                 id="forum-thread-body"
                 class="d-flex card w-100 justify-content-start"
@@ -604,6 +609,11 @@
         let f = await ForumController.getForum(forumId);
         console.log(f);
 
+        let forumPublicity = document.getElementById("forum-publicity");
+        if (f.hideReply === true)
+          forumPublicity.textContent =
+            "Responses to this thread are hidden. Students won't be able to see each other posts.";
+
         let editButtonsTemplate = document.getElementById(
           "edit-button-template"
         );
@@ -776,7 +786,7 @@
                   success = await ForumController.replyForum(
                     postContent.value,
                     currUserID,
-                    fd.forumId
+                    fd.replyId
                   );
                   if (success === true) {
                     window.location.reload();
@@ -819,12 +829,12 @@
                   "#forum-discussion-content-body"
                 );
 
-                if (f.hideReply == false || fdr.userID == currUserID)
+                if (f.hideReply == false || fdr.userId == currUserID)
                   fdrBody.appendChild(fdrClone);
               });
             }
 
-            if (f.hideReply == false || fd.userID == currUserID)
+            if (f.hideReply == false || fd.userId == currUserID)
               fdBody.appendChild(fdClone);
           });
         }
