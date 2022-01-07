@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Create Curriculum</title>
+    <title>View Class Detail</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -38,14 +38,7 @@
         <div id="content">
           <!-- Topbar -->
           <nav
-            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
             <button
@@ -57,15 +50,7 @@
 
             <!-- Topbar Search -->
             <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             >
               <div class="input-group">
                 <input
@@ -100,12 +85,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                   aria-labelledby="searchDropdown"
                 >
                   <form class="form-inline mr-auto w-100 navbar-search">
@@ -144,11 +124,7 @@
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="alertsDropdown"
                 >
                   <h6 class="dropdown-header">Alerts Center</h6>
@@ -213,11 +189,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="messagesDropdown"
                 >
                   <h6 class="dropdown-header">Message Center</h6>
@@ -325,11 +297,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
                   <a class="dropdown-item" href="#">
@@ -364,82 +332,78 @@
 
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <!-- Page Heading -->
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800">Create New Curriculum</h1>
+            <div class="card-header py-3">
+              <h3 class="m-0 font-weight-bold text-primary" id="courseName">
+                Test
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="pb-2" id="lectName">Lect Name</div>
+              <div id="className">ClassId</div>
             </div>
 
-            <!-- Content Row -->
+            <ul class="nav nav-tabs">
+              <li><a href="#session" class="nav-link active">Session</a></li>
+              <li><a href="#syllabus" class="nav-link">Syllabus</a></li>
+              <li><a href="#forum" class="nav-link">Forum</a></li>
+              <li><a href="#people" class="nav-link">People</a></li>
+            </ul>
 
-            <div class="row">
-              <div class="container">
-                <hr />
-                <div class="user">
-                  <div class="form-group row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                      <div>
-                        <label for="majorId">Major Id</label>
-                        <input
-                          type="name"
-                          class="form-control form-control-user"
-                          id="majorId"
-                          placeholder="ex. CS"
-                        />
+            <div class="tab-content">
+              <div id="session" class="tab-pane fade in active">
+                <h5 class="m-3 font-weight-bold text-primary">Session</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <div id="syllabus" class="tab-pane fade">
+                <h5 class="m-3 font-weight-bold text-primary">Syllabus</h5>
+                <p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+              <div id="forum" class="tab-pane fade">
+                <h5 class="m-3 font-weight-bold text-primary">Forum</h5>
+                <a
+                  href="./createForum.html"
+                  id="createForum"
+                  class="btn btn-info mb-3"
+                >
+                  Create Forum
+                </a>
+                <div
+                  id="forum-body"
+                  class="d-flex flex-row mb-4 align-content-stretch flex-wrap"
+                >
+                  <template id="forum-card-template">
+                    <div id="forum-card" class="card" style="width: 18rem">
+                      <div class="card-body">
+                        <h5 id="forum-title" class="card-title">Card title</h5>
+                        <h6
+                          id="forum-creator"
+                          class="card-subtitle mb-2 text-muted"
+                        >
+                          Card subtitle
+                        </h6>
+                        <p id="forum-date" class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <!-- <a href="#" class="card-link">Card link</a> -->
+                        <!-- <a href="#" class="card-link">Another link</a> -->
                       </div>
                     </div>
-                    <div class="col-sm-4">
-                      <div>
-                        <label for="">Semester</label>
-                        <input
-                          type="number"
-                          class="form-control form-control-user"
-                          id="semester"
-                          placeholder="ex. 2"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div>
-                        <label for="">Total Credits</label>
-                        <input
-                          type="number"
-                          class="form-control form-control-user"
-                          id="totalCreds"
-                          placeholder="ex. 20"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group courses ">
-                    <label for="">Courses</label>
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control form-control-user courseList"
-                      ></input>
-                      <div class="input-group-addon ml-3"> 
-                        <a href="javascript:void(0)" class="btn btn-success addLO"><i class="fas fa-plus"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group coursesCopy" style="display: none;">
-                      <input
-                        type="text"
-                        class="form-control form-control-user courseList"
-                      ></input>
-                      <div class="input-group-addon ml-3"> 
-                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <a href="#" class="btn btn-primary btn-user btn-block" id="createCurr">
-                    Create Curriculum
-                  </a>
+                  </template>
                 </div>
-                <hr />
+              </div>
+              <div id="people" class="tab-pane fade">
+                <h5 class="m-3 font-weight-bold text-primary">People</h5>
+                <p>
+                  Eaque ipsa quae ab illo inventore veritatis et quasi
+                  architecto beatae vitae dicta sunt explicabo.
+                </p>
               </div>
             </div>
           </div>
@@ -507,9 +471,85 @@
 
     <!-- Script to set values to view -->
     <script type="module">
-      window.onload = () => {
+      import { ForumController } from "../controller/ForumController.js";
+      import { UserController } from "../controller/userController.js";
+      import { CourseController } from "../controller/courseController.js";
+      import { ClassController } from "../controller/classController.js";
+      import { dateTimeToString } from "../assets/js/utils.js";
+
+      $(document).ready(function () {
+        $(".nav-tabs a").click(function () {
+          $(this).tab("show");
+        });
+      });
+
+      window.onload = async () => {
         var name = document.getElementById("username");
         name.innerHTML = localStorage.getItem("username");
+
+        let role = localStorage.getItem("role");
+
+        let urlQuery = new URLSearchParams(window.location.search);
+        let classId = urlQuery.get("classId");
+
+        let currClass = await ClassController.getClass(classId);
+        console.log(currClass);
+        let classDiv = document.getElementById("className");
+        classDiv.innerHTML = classId;
+
+        let lecturer = await UserController.getUser(currClass.lecturerId);
+        let lectDiv = document.getElementById("lectName");
+        lectDiv.innerHTML = lecturer.name;
+
+        let currCourse = await CourseController.getCourse(currClass.courseCode);
+        console.log(currCourse);
+        let courseName = document.getElementById("courseName");
+        courseName.innerHTML = currCourse.name;
+
+        let forums = await ForumController.getAllByClass(classId);
+        console.log(forums);
+
+        $("#createForum").attr("href", "./createForum.html?classId=" + classId);
+
+        forums.map(async (f) => {
+          let user = await UserController.getUser(f.userId);
+          console.log(f.userId);
+          let body = document.querySelector("#forum-body");
+          let template = document.querySelector("#forum-card-template");
+
+          const clone = template.content.cloneNode(true);
+          const forumCreator = clone.querySelector("#forum-creator");
+          const forumTitle = clone.querySelector("#forum-title");
+          const forumTimeStamp = clone.querySelector("#forum-date");
+
+          var dateObj = new Date(f.postedDate * 1000);
+          var year = dateObj.getFullYear();
+          var month = dateObj.toLocaleDateString(undefined, { month: "short" });
+          var date = dateObj.getDate();
+          var hour =
+            dateObj.getHours() < 10
+              ? "0" + dateObj.getHours()
+              : dateObj.getHours();
+          var min =
+            dateObj.getMinutes() < 10
+              ? "0" + dateObj.getMinutes()
+              : dateObj.getMinutes();
+          var time =
+            f.postedDate.toDate().toDateString() +
+            ", " +
+            f.postedDate.toDate().toLocaleTimeString("en-US");
+          forumCreator.textContent = user.name;
+          forumTitle.textContent = f.title;
+          forumTimeStamp.textContent = time;
+          console.log(f.title);
+
+          let forumCard = clone.querySelector("#forum-card");
+          forumCard.addEventListener("click", () => {
+            window.location.assign(`./forumDetail.html?forumId=${f.forumId}`);
+          });
+
+          body.appendChild(clone);
+        });
       };
     </script>
 
@@ -523,42 +563,5 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
-
-    <!-- Script to set values to view -->
-    <script type="module">
-      import { InputFacade } from "../facade/InputFacade.js";
-
-      window.onload = () => {
-        var name = document.getElementById("username");
-        name.innerHTML = localStorage.getItem("username");
-      };
-
-      document
-        .getElementById("createCurr")
-        .addEventListener("click", async () => {
-          console.log("test");
-          await new InputFacade().createCurriculum();
-        });
-
-      
-    </script>
-
-    <!-- Page level custom scripts -->
-    <script>
-      $(document).ready(function () {
-        $(".addLO").click(function () {
-          var fieldHTML =
-            '<div class="input-group courses">' +
-            $(".coursesCopy").html() +
-            "</div>";
-          $("body").find(".courses:last").after(fieldHTML);
-        });
-
-        //remove fields group
-        $("body").on("click", ".remove", function () {
-          $(this).parents(".courses").remove();
-        });
-      });
-    </script>
   </body>
 </html>

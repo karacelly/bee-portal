@@ -44,22 +44,12 @@
                     <p class="social-media d-flex justify-content-end">
                       <a
                         href="#"
-                        class="
-                          social-icon
-                          d-flex
-                          align-items-center
-                          justify-content-center
-                        "
+                        class="social-icon d-flex align-items-center justify-content-center"
                         ><span class="fa fa-facebook"></span
                       ></a>
                       <a
                         href="#"
-                        class="
-                          social-icon
-                          d-flex
-                          align-items-center
-                          justify-content-center
-                        "
+                        class="social-icon d-flex align-items-center justify-content-center"
                         ><span class="fa fa-twitter"></span
                       ></a>
                     </p>
@@ -120,12 +110,12 @@
       </div>
     </section>
     <script type="module">
-      import { inputFacade } from "../facade/inputFacade.js";
+      import { InputFacade } from "../facade/InputFacade.js";
       document
         .getElementById("signInBtn")
         .addEventListener("click", async () => {
           console.log("click");
-          await new inputFacade().authUser();
+          await new InputFacade().authUser();
         });
     </script>
 

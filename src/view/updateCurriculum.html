@@ -526,7 +526,7 @@
 
     <!-- Script to set values to view -->
     <script type="module">
-      import { inputFacade } from "../facade/inputFacade.js";
+      import { InputFacade } from "../facade/InputFacade.js";
       import { CurriculumController } from "../controller/curriculumController.js"
 
       $(document).ready(function () {
@@ -566,7 +566,7 @@
           .getElementById("createCurr")
           .addEventListener("click", async () => {
             console.log("test");
-            await new inputFacade().updateCurriculum();
+            await new InputFacade().updateCurriculum();
           });
       })
       
