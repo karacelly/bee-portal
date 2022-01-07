@@ -11,6 +11,10 @@ export class UserController {
     return await User.get(userId);
   }
 
+  static async getStudent(studentId) {
+    return await User.getStudent(studentId);
+  }
+
   static async getAllStudents() {
     return await User.getAllStudents();
   }

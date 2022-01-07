@@ -4,6 +4,7 @@ import { CurriculumController } from "../controller/curriculumController.js";
 import { ClassController } from "../controller/classController.js";
 import { ExamController } from "../controller/examController.js";
 import { ForumController } from "../controller/forumController.js";
+import { AssignmentController } from "../controller/assignmentController.js";
 import { getMultipleSelectValues } from "../assets/js/utils.js";
 
 export class InputFacade {
@@ -88,6 +89,29 @@ export class InputFacade {
       con,
       hide,
       false
+    );
+  }
+
+  async createAssignment() {
+    console.log("create assignment");
+
+    let classId = document.getElementById("classId").value;
+    let assignmentType = document.getElementById("assignment-type").value;
+    let deadlineDate = document.getElementById("deadline-date").value;
+    let assignmentQuestion = document.getElementById(
+      "assignment-question"
+    ).value;
+
+    console.log(classId);
+    console.log(assignmentType);
+    console.log(deadlineDate);
+    console.log(assignmentQuestion);
+
+    await AssignmentController.insertAssignment(
+      classId,
+      assignmentType,
+      deadlineDate,
+      assignmentQuestion
     );
   }
 
