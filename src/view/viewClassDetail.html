@@ -383,7 +383,7 @@
                   <div class="col-lg-3">
                     <div class="card shadow mb-4 .border-left-info">
                       <div class="card-body">
-                        <div class="pb-2" id="stud-name">
+                        <div class="pb-2">
                           <h6 class="m-0 font-weight-bold text-primary" id="stud-name">TEST</h6>
                         </div>
                         <div id="stud-nim">
@@ -397,7 +397,40 @@
             </div>
             <div id="assignment" class="tab-pane fade">
               <h5 class="m-3 font-weight-bold text-primary">Assignment</h5>
-              
+              <h6 class="m-3 font-weight-bold text-primary">Personal Assignment</h6>
+              <div class="row" id="personal-assignment-body">
+                <template id="personal-assignment-template">
+                  <div class="col-lg-3">
+                    <div class="card shadow mb-4 .border-left-info">
+                      <div class="card-body">
+                        <div class="pb-2">
+                          <h6 class="m-0 font-weight-bold text-primary" id="assignment-number">TEST</h6>
+                        </div>
+                        <div id="assignment-deadline">
+                          STRESS
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <h6 class="m-3 font-weight-bold text-primary">Group Assignment</h6>
+              <div class="row" id="group-assignment-body">
+                <template id="group-assignment-template">
+                  <div class="col-lg-3">
+                    <div class="card shadow mb-4 .border-left-info">
+                      <div class="card-body">
+                        <div class="pb-2">
+                          <h6 class="m-0 font-weight-bold text-primary" id="assignment-number">TEST</h6>
+                        </div>
+                        <div id="assignment-deadline">
+                          STRESS
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
             </div>
           </div>
         </div>
@@ -454,6 +487,7 @@
       import { UserController } from "../controller/userController.js";
       import { CourseController } from "../controller/courseController.js";
       import { ClassController } from "../controller/classController.js";
+      import { AssignmentController } from "../controller/assignmentController.js";
       import { SessionMappingController } from "../controller/sessionMappingController.js"
       import { dateTimeToString } from "../assets/js/utils.js";
 
@@ -624,8 +658,26 @@
               </a>`
         
         if(role == "Lecturer"){
-          as.insertAdjacentHTML("beforeend", html)
+          as.insertAdjacentHTML("beforebegin", html)
         }
+        let allPA = await AssignmentController.getAllPersonalAssignment(classId);
+        console.log(allPA)
+
+        let PAbody = document.getElementById("personal-assignment-body");
+        
+        for(let i=0; i<allPA.length; i++){
+
+          let PAtemplate = document.getElementById("personal-assignment-template");
+          let PAclone = PAtemplate.content.cloneNode(true);
+
+          let assignmentNum = PAclone.querySelector("assignment-number");
+          assignmentNum.textContent = "Assignment " + i+1;
+          let assignmentDeadline = PAclone.querySelector("assignment-deadline");
+          assignmentDeadline.textContent = dateTimeToString(allPA[i].deadlineDate);
+
+          PAbody.appendChild(PAclone);
+        }
+        
       };
     </script>
 
