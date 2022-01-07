@@ -28,11 +28,11 @@ export class AssignmentController {
     return await Assignment.get(assignmentId);
   }
 
-  static async getAllPersonalAssignment() {
-    return await Assignment.getAllPersonalAssignment();
+  static async getAllPersonalAssignment(classId) {
+    return await Assignment.getAllPersonalAssignment(classId);
   }
 
-  static async getAllGroupAssignment() {
-    return await Assignment.getAllGroupAssignment();
+  static async getAllGroupAssignment(classId) {
+    return await Assignment.getAllGroupAssignment(classId);
   }
 }

@@ -70,13 +70,14 @@ export class Assignment {
     return data.data();
   }
 
-  static async getAllPersonalAssignment() {
+  static async getAllPersonalAssignment(classId) {
     const db = Database.getInstance();
     const assignmentRef = collection(db, "assignment");
 
     const querySnapshot = query(
       assignmentRef,
-      where("assignmentType", "==", "Personal")
+      where("assignmentType", "==", "Personal"),
+      where("classId", "==", classId)
     ).withConverter(assignmentConverter);
 
     const data = await getDocs(querySnapshot);
@@ -85,13 +86,14 @@ export class Assignment {
     return assignmentList;
   }
 
-  static async getAllGroupAssignment() {
+  static async getAllGroupAssignment(classId) {
     const db = Database.getInstance();
     const assignmentRef = collection(db, "assignment");
 
     const querySnapshot = query(
       assignmentRef,
-      where("assignmentType", "==", "Group")
+      where("assignmentType", "==", "Group"),
+      where("classId", "==", classId)
     ).withConverter(assignmentConverter);
 
     const data = await getDocs(querySnapshot);
