@@ -52,7 +52,7 @@ export class Forum {
         postedDate: serverTimestamp(),
       });
       return {
-        forumId: this.forumId,
+        forumId: docIns.id,
         classId: this.classId,
         userId: this.userId,
         sessionId: this.sessionId,

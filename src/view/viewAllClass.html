@@ -432,12 +432,31 @@
             let one = await CourseController.getCourse(c[i].courseCode);
             let lect = await UserController.getUser(c[i].lecturerId);
 
+            let day =
+              c[i].day == 1
+                ? "Monday"
+                : c[i].day == 2
+                ? "Tuesday"
+                : c[i].day == 3
+                ? "Wednesday"
+                : c[i].day == 4
+                ? "Thursday"
+                : c[i].day == 5
+                ? "Friday"
+                : "Saturday";
+
+            let shift = c[i].shift - 1;
+
+            let time = [7, 9, 11, 13, 15, 17];
+
             console.log(one);
             let html = `<div class="col-lg-3">
 
                               <div class="card shadow mb-4 .border-left-info">
                                 <div class="card-header py-3">
-                                  <h6 class="m-0 font-weight-bold text-primary">${one.courseId} - ${one.name}</h6>
+                                  <h6 class="m-0 font-weight-bold text-primary">${
+                                    one.courseId
+                                  } - ${one.name}</h6>
                                 </div>
                                 <div class="card-body">
                                   <div class="pb-2">
@@ -449,6 +468,17 @@
                                     <a href="#" class="btn btn-info btn-circle btn-sm">
                                       <i class="fas fa-book"></i>
                                     </a>   ${c[i].classId}
+                                  </div>
+                                  <div class="m-2">
+                                    ${day}
+                                  </div>
+                                  <div class="m-2">
+                                    ${
+                                      time[shift] +
+                                      ".20 - " +
+                                      (time[shift] + 1) +
+                                      ".50"
+                                    }
                                   </div>
                                 </div>
                               </div>

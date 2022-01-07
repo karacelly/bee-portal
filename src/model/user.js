@@ -49,6 +49,23 @@ export class User {
     return userList;
   }
 
+  static async getStudent(studentId) {
+    const db = Database.getInstance();
+    const userRef = collection(db, "user");
+
+    const querySnapshot = query(
+      userRef,
+      where("role", "==", "Student"),
+      where("studentId", "==", studentId),
+      limit(1)
+    ).withConverter(userConverter);
+
+    const data = await getDocs(querySnapshot);
+    const userList = data.docs.map((doc) => doc.data());
+
+    return userList;
+  }
+
   static async getAll() {
     const db = Database.getInstance();
 
