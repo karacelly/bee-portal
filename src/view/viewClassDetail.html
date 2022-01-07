@@ -359,10 +359,101 @@
               </div>
               <div id="syllabus" class="tab-pane fade">
                 <h5 class="m-3 font-weight-bold text-primary">Syllabus</h5>
-                <p>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <div class="syllabus-body" id="syl">
+                  <template id="syllabus-template">
+                    <div class="syllabus-data">
+                      <div>
+                        <div class="p-4">
+                          <div class="syllabus-ca">
+                            <div
+                              class="font-size-16px font-weight-bold mb-3"
+                              id="CourseDescription"
+                            >
+                              Course Description
+                            </div>
+                            <div class="font-size-14px" id="courseDescTemp">
+                              This Course comprises materials to improve
+                              students’ ability in using Bahasa Indonesia on
+                              spoken and written form especially in composing
+                              paragraphs, essays, academic writings, and make a
+                              speech context as well as presenting it in
+                              accurate and polite manner
+                            </div>
+                          </div>
+                        </div>
+                        <hr class="my-0" />
+                      </div>
+                      <div>
+                        <div class="p-4">
+                          <div
+                            class="font-size-16px font-weight-bold mb-3"
+                            id="LearningOutcomes"
+                          >
+                            Learning Outcomes
+                          </div>
+                          <div id="lo-body">
+                            <template id="lo-template">
+                              <div class="d-flex flex-row align-items-top">
+                                <div
+                                  class="circle eightpx-circle mr-3 syllabus-data-non-ca"
+                                ></div>
+                                <p id="lo-con">
+                                  LO1: Identify spelling errors in sentences and
+                                  paragraphs
+                                </p>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                        <hr class="my-0" />
+                      </div>
+                      <div>
+                        <div class="p-4">
+                          <div
+                            class="font-size-16px font-weight-bold mb-3"
+                            id="Teaching&amp;LearningStrategies"
+                          >
+                            Teaching &amp; Learning Strategies
+                          </div>
+                          <div id="strat-body">
+                            <template id="strat-template">
+                              <div class="d-flex flex-row align-items-top">
+                                <div
+                                  class="circle eightpx-circle mr-3 syllabus-data-non-ca"
+                                ></div>
+                                <p id="strat-con">
+                                  Group Assignments
+                                </p>
+                              </div>
+                            </template>
+                        </div>
+                        <hr class="my-0" />
+                      </div>
+                      <div>
+                        <div class="p-4">
+                          <div
+                            class="font-size-16px font-weight-bold mb-3"
+                            id="Textbooks"
+                          >
+                            Textbooks
+                          </div>
+                          <div id="txt-body">
+                            <template id="txt-template">
+                              <div class="d-flex flex-row align-items-top">
+                                <div
+                                  class="circle eightpx-circle mr-3 syllabus-data-non-ca"
+                                ></div>
+                                <p id="txt-con">
+                                  Prof. Dr. Achmad HP dan Dr. Alex, M.Pd. (2016). Bahasa Indonesia untuk Perguruan Tinggi. Jakarta: Erlangga.
+                                </p>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
               </div>
               <div id="forum" class="tab-pane fade">
                 <h5 class="m-3 font-weight-bold text-primary">Forum</h5>
@@ -506,6 +597,7 @@
         let courseName = document.getElementById("courseName");
         courseName.innerHTML = currCourse.name;
 
+        // ----------- FORUM ---------------
         let forums = await ForumController.getAllByClass(classId);
         console.log(forums);
 
@@ -550,6 +642,46 @@
 
           body.appendChild(clone);
         });
+
+        // ----------- SYLLABUS ---------------
+        let sylTemplate = document.querySelector("#syllabus-template");
+        const sylClone = sylTemplate.content.cloneNode(true);
+        const courseDesc = sylClone.querySelector("#courseDescTemp");
+
+        courseDesc.textContent = currCourse.courseDesc;
+        let syl = document.getElementById("syl");
+
+        syl.appendChild(sylClone);
+
+        let loBody = document.querySelector("#lo-body");
+        for (let i = 0; i < currCourse.learningOutcomes.length; i++) {
+          let loTemplate = document.querySelector("#lo-template");
+          const loClone = loTemplate.content.cloneNode(true);
+          let locon = loClone.querySelector("#lo-con");
+          locon.textContent = currCourse.learningOutcomes[i];
+
+          loBody.appendChild(loClone);
+        }
+
+        let stratBody = document.querySelector("#strat-body");
+        for (let i = 0; i < currCourse.strategies.length; i++) {
+          let stratTemplate = document.querySelector("#strat-template");
+          const stratClone = stratTemplate.content.cloneNode(true);
+          let stratcon = stratClone.querySelector("#strat-con");
+          stratcon.textContent = currCourse.strategies[i];
+
+          stratBody.appendChild(stratClone);
+        }
+        
+        let txtBody = document.querySelector("#txt-body");
+        for (let i = 0; i < currCourse.textbooks.length; i++) {
+          let txtTemplate = document.querySelector("#txt-template");
+          const txtClone = txtTemplate.content.cloneNode(true);
+          let txtcon = txtClone.querySelector("#txt-con");
+          txtcon.textContent = currCourse.textbooks[i];
+
+          txtBody.appendChild(txtClone);
+        }
       };
     </script>
 

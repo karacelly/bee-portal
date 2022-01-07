@@ -45,6 +45,10 @@ export class ClassController {
     return await Class.getLecturerAll(lecturerId);
   }
 
+  static async getStudentClasses(lecturerId) {
+    return await Class.getStudentClasses(lecturerId);
+  }
+
   static async deleteClass(classId) {
     return await Class.delete(classId);
   }

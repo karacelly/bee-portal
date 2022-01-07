@@ -421,6 +421,9 @@
           c = await ClassController.getLecturerClasses(
             localStorage.getItem("user")
           );
+        } else if (role == "Student") {
+          let stud = await UserController.getUser(localStorage.getItem("user"));
+          c = await ClassController.getStudentClasses(stud.studentId);
         }
         console.log(c);
 
