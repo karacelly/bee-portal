@@ -1,8 +1,12 @@
 import { UserController } from "../controller/userController.js";
 import { CourseController } from "../controller/courseController.js";
 import { CurriculumController } from "../controller/curriculumController.js";
+import { ClassController } from "../controller/classController.js";
+import { ExamController } from "../controller/examController.js";
+import { ForumController } from "../controller/forumController.js";
+import { getMultipleSelectValues } from "../assets/js/utils.js";
 
-export class inputFacade {
+export class InputFacade {
   constructor() {}
 
   async authUser() {
@@ -43,6 +47,47 @@ export class inputFacade {
       majorId,
       Number(semester),
       Number(totalCreds)
+    );
+  }
+
+  async createClass() {
+    console.log("create class");
+
+    let select = document.getElementById("studentIds");
+    let studentIds = getMultipleSelectValues(select);
+    let lecturerId = document.getElementById("lecturerId").value;
+    let classCode = document.getElementById("classId").value;
+    let courseId = document.getElementById("courseId").value;
+    let day = document.getElementById("day");
+    let shift = document.getElementById("shift");
+
+    await ClassController.insertClass(
+      classCode,
+      courseId,
+      lecturerId,
+      studentIds,
+      Number(day),
+      Number(shift)
+    );
+  }
+
+  async createForum(classId, hide) {
+    console.log("create forum");
+
+    let userId = localStorage.getItem("user");
+    let session = document.getElementById("sessionId").value;
+    let title = document.getElementById("title").value;
+    let con = document.getElementById("content-input").value;
+
+    console.log(con);
+    await ForumController.insertForum(
+      classId,
+      userId,
+      session,
+      title,
+      con,
+      hide,
+      false
     );
   }
 
@@ -148,5 +193,14 @@ export class inputFacade {
       Number(semester),
       Number(totalCreds)
     );
+  }
+
+  async setProctor() {
+    const urlQuery = new URLSearchParams(window.location.search);
+
+    let examId = urlQuery.get("examId");
+    let proctorId = document.getElementById("proctors").value;
+
+    await ExamController.setProctor(examId, proctorId);
   }
 }

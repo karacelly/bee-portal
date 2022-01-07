@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Create Curriculum</title>
+    <title>Set Proctor</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -38,14 +38,7 @@
         <div id="content">
           <!-- Topbar -->
           <nav
-            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
             <button
@@ -57,15 +50,7 @@
 
             <!-- Topbar Search -->
             <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             >
               <div class="input-group">
                 <input
@@ -100,12 +85,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                   aria-labelledby="searchDropdown"
                 >
                   <form class="form-inline mr-auto w-100 navbar-search">
@@ -144,11 +124,7 @@
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="alertsDropdown"
                 >
                   <h6 class="dropdown-header">Alerts Center</h6>
@@ -213,11 +189,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="messagesDropdown"
                 >
                   <h6 class="dropdown-header">Message Center</h6>
@@ -325,11 +297,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
                   <a class="dropdown-item" href="#">
@@ -368,7 +336,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Create New Curriculum</h1>
+              <h1 class="h3 mb-0 text-gray-800">Set Proctor</h1>
             </div>
 
             <!-- Content Row -->
@@ -377,66 +345,30 @@
               <div class="container">
                 <hr />
                 <div class="user">
-                  <div class="form-group row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                      <div>
-                        <label for="majorId">Major Id</label>
-                        <input
-                          type="name"
-                          class="form-control form-control-user"
-                          id="majorId"
-                          placeholder="ex. CS"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div>
-                        <label for="">Semester</label>
-                        <input
-                          type="number"
-                          class="form-control form-control-user"
-                          id="semester"
-                          placeholder="ex. 2"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div>
-                        <label for="">Total Credits</label>
-                        <input
-                          type="number"
-                          class="form-control form-control-user"
-                          id="totalCreds"
-                          placeholder="ex. 20"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group courses ">
-                    <label for="">Courses</label>
-                    <div class="input-group">
+                  <div class="form-group">
+                    <div>
                       <input
-                        type="text"
-                        class="form-control form-control-user courseList"
-                      ></input>
-                      <div class="input-group-addon ml-3"> 
-                        <a href="javascript:void(0)" class="btn btn-success addLO"><i class="fas fa-plus"></i></a>
-                      </div>
+                        type="name"
+                        class="form-control form-control-user"
+                        id="examId"
+                        hidden
+                      />
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="input-group coursesCopy" style="display: none;">
-                      <input
-                        type="text"
-                        class="form-control form-control-user courseList"
-                      ></input>
-                      <div class="input-group-addon ml-3"> 
-                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </div>
+                    <label for="">Proctor Available</label>
+                    <select
+                      class="form-control form-control-user"
+                      name="proctors"
+                      id="proctors"
+                    ></select>
                   </div>
-                  <a href="#" class="btn btn-primary btn-user btn-block" id="createCurr">
-                    Create Curriculum
+                  <a
+                    href="#"
+                    class="btn btn-primary btn-user btn-block"
+                    id="setProctor"
+                  >
+                    Assign Proctor
                   </a>
                 </div>
                 <hr />
@@ -507,10 +439,31 @@
 
     <!-- Script to set values to view -->
     <script type="module">
+      import { InputFacade } from "../facade/InputFacade.js";
+      import { UserController } from "../controller/userController.js";
+      import { ExamController } from "../controller/examController.js";
+
       window.onload = () => {
-        var name = document.getElementById("username");
-        name.innerHTML = localStorage.getItem("username");
+        let studs = UserController.getAllAvailableProctors();
+        studs
+          .then((result) => {
+            console.log(result);
+            let select = document.getElementById("proctors");
+            for (let i = 0; i < result.length; i++) {
+              var opt = document.createElement("option");
+              opt.value = result[i].userId;
+              opt.innerHTML = result[i].lecturerId + " - " + result[i].name;
+              select.appendChild(opt);
+            }
+          })
+          .catch((err) => {});
       };
+
+      document
+        .getElementById("setProctor")
+        .addEventListener("click", async () => {
+          await new InputFacade().setProctor();
+        });
     </script>
 
     <!-- Bootstrap core JavaScript-->
@@ -523,42 +476,5 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
-
-    <!-- Script to set values to view -->
-    <script type="module">
-      import { InputFacade } from "../facade/InputFacade.js";
-
-      window.onload = () => {
-        var name = document.getElementById("username");
-        name.innerHTML = localStorage.getItem("username");
-      };
-
-      document
-        .getElementById("createCurr")
-        .addEventListener("click", async () => {
-          console.log("test");
-          await new InputFacade().createCurriculum();
-        });
-
-      
-    </script>
-
-    <!-- Page level custom scripts -->
-    <script>
-      $(document).ready(function () {
-        $(".addLO").click(function () {
-          var fieldHTML =
-            '<div class="input-group courses">' +
-            $(".coursesCopy").html() +
-            "</div>";
-          $("body").find(".courses:last").after(fieldHTML);
-        });
-
-        //remove fields group
-        $("body").on("click", ".remove", function () {
-          $(this).parents(".courses").remove();
-        });
-      });
-    </script>
   </body>
 </html>

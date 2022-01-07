@@ -16,33 +16,23 @@ import {
 import { Database } from "./firebase.js";
 
 export class Class {
-  constructor(
-    courseId,
-    name,
-    courseDesc,
-    credit,
-    learningOutcomes,
-    strategies,
-    textbooks
-  ) {
-    this.courseId = courseId;
-    this.name = name;
-    this.courseDesc = courseDesc;
-    this.credit = credit;
-    this.learningOutcomes = learningOutcomes;
-    this.strategies = strategies;
-    this.textbooks = textbooks;
+  constructor(classId, courseCode, lecturerId, studentId, day, shift) {
+    this.classId = classId;
+    this.courseCode = courseCode;
+    this.lecturerId = lecturerId;
+    this.studentId = studentId;
+    this.day = day;
+    this.shift = shift;
   }
 
   async insert() {
     try {
-      await setDoc(doc(Database.getInstance(), "course", this.courseId), {
-        name: this.name,
-        courseDesc: this.courseDesc,
-        credit: this.credit,
-        learningOutcomes: this.learningOutcomes,
-        strategies: this.strategies,
-        textbooks: this.textbooks,
+      await setDoc(doc(Database.getInstance(), "class", this.classId), {
+        courseCode: this.courseCode,
+        lecturerId: this.lecturerId,
+        studentId: this.studentId,
+        day: this.day,
+        shift: this.shift,
       });
       return true;
     } catch (error) {
@@ -51,87 +41,74 @@ export class Class {
     }
   }
 
-  static async get(courseId) {
+  static async get(classId) {
     const data = await getDoc(
-      doc(Database.getInstance(), "course", courseId).withConverter(
-        courseConverter
+      doc(Database.getInstance(), "class", classId).withConverter(
+        classConverter
       )
     );
     return data.data();
   }
 
-  static async update(
-    courseId,
-    name,
-    courseDesc,
-    credit,
-    learningOutcomes,
-    strategies,
-    textbooks
-  ) {
-    try {
-      await updateDoc(doc(Database.getInstance(), "course", courseId), {
-        name: name,
-        courseDesc: courseDesc,
-        credit: credit,
-        learningOutcomes: learningOutcomes,
-        strategies: strategies,
-        textbooks: textbooks,
-      });
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
-  static async delete(courseId) {
-    try {
-      await deleteDoc(doc(Database.getInstance(), "course", courseId));
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
-  static async getAllClasss() {
-    const queryGetAllClasss = query(
-      collection(Database.getInstance(), "course").withConverter(
-        courseConverter
-      )
+  static async getAll() {
+    const queryGetAllClasses = query(
+      collection(Database.getInstance(), "class").withConverter(classConverter)
     );
-    let datas = await getDocs(queryGetAllClasss);
-    let courseList = datas.docs.map((d) => {
+    let datas = await getDocs(queryGetAllClasses);
+    let classList = datas.docs.map((d) => {
       return d.data();
     });
 
-    return courseList;
+    return classList;
+  }
+
+  static async getLecturerAll(lecturerId) {
+    const queryGetAllClasses = query(
+      collection(Database.getInstance(), "class"),
+      where("lecturerId", "==", lecturerId)
+    ).withConverter(classConverter);
+    let datas = await getDocs(queryGetAllClasses);
+    let classList = datas.docs.map((d) => {
+      return d.data();
+    });
+
+    return classList;
+  }
+
+  static async getStudentClasses(studentId) {
+    const queryGetAllClasses = query(
+      collection(Database.getInstance(), "class"),
+      where("studentId", "array-contains", studentId)
+    ).withConverter(classConverter);
+    let datas = await getDocs(queryGetAllClasses);
+    let classList = datas.docs.map((d) => {
+      return d.data();
+    });
+
+    return classList;
   }
 }
 
-const courseConverter = {
-  toFirestore: (course) => {
+const classConverter = {
+  toFirestore: (c) => {
     return {
-      courseId: course.courseId,
-      name: course.name,
-      courseDesc: course.courseDesc,
-      credit: course.credit,
-      learningOutcomes: course.learningOutcomes,
-      strategies: course.strategies,
-      textbooks: course.textbooks,
+      classId: c.classId,
+      courseCode: c.courseCode,
+      lecturerId: c.lecturerId,
+      studentId: c.studentId,
+      day: c.day,
+      shift: c.shift,
     };
   },
   fromFirestore: (snapshot, options) => {
     let d = snapshot.data(options);
     return new Class(
       snapshot.id,
-      d.name,
-      d.courseDesc,
-      d.credit,
-      d.learningOutcomes,
-      d.strategies,
-      d.textbooks
+      d.courseCode,
+      d.lecturerId,
+      d.studentId,
+      d.day,
+      d.shift
     );
   },
 };

@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Create Curriculum</title>
+    <title>Create Forum</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -38,14 +38,7 @@
         <div id="content">
           <!-- Topbar -->
           <nav
-            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
             <button
@@ -57,15 +50,7 @@
 
             <!-- Topbar Search -->
             <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             >
               <div class="input-group">
                 <input
@@ -100,12 +85,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                   aria-labelledby="searchDropdown"
                 >
                   <form class="form-inline mr-auto w-100 navbar-search">
@@ -144,11 +124,7 @@
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="alertsDropdown"
                 >
                   <h6 class="dropdown-header">Alerts Center</h6>
@@ -213,11 +189,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="messagesDropdown"
                 >
                   <h6 class="dropdown-header">Message Center</h6>
@@ -325,11 +297,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
                   <a class="dropdown-item" href="#">
@@ -368,7 +336,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Create New Curriculum</h1>
+              <h1 class="h3 mb-0 text-gray-800">Create New Forum</h1>
             </div>
 
             <!-- Content Row -->
@@ -377,66 +345,56 @@
               <div class="container">
                 <hr />
                 <div class="user">
-                  <div class="form-group row">
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                      <div>
-                        <label for="majorId">Major Id</label>
-                        <input
-                          type="name"
-                          class="form-control form-control-user"
-                          id="majorId"
-                          placeholder="ex. CS"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div>
-                        <label for="">Semester</label>
-                        <input
-                          type="number"
-                          class="form-control form-control-user"
-                          id="semester"
-                          placeholder="ex. 2"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div>
-                        <label for="">Total Credits</label>
-                        <input
-                          type="number"
-                          class="form-control form-control-user"
-                          id="totalCreds"
-                          placeholder="ex. 20"
-                        />
-                      </div>
-                    </div>
+                  <div class="form-group">
+                    <label for="">Course</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="courseId"
+                      disabled
+                    ></input>
                   </div>
-                  <div class="form-group courses ">
-                    <label for="">Courses</label>
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control form-control-user courseList"
-                      ></input>
-                      <div class="input-group-addon ml-3"> 
-                        <a href="javascript:void(0)" class="btn btn-success addLO"><i class="fas fa-plus"></i></a>
+                  <div class="form-group row">
+                    <div class="col-sm-6">
+                      <div>
+                        <label >Class</label>
+                        <input
+                          type="text"
+                          class="form-control form-control-user"
+                          id="classCode"
+                          disabled
+                        />
                       </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label >Session</label>
+                        <select class="form-control form-control-user"
+                        id="sessionId"></select>
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="input-group coursesCopy" style="display: none;">
-                      <input
-                        type="text"
-                        class="form-control form-control-user courseList"
-                      ></input>
-                      <div class="input-group-addon ml-3"> 
-                        <a href="javascript:void(0)" class="btn btn-danger remove"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </div>
+                    <label for="">Title</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="title"
+                    ></input>
                   </div>
-                  <a href="#" class="btn btn-primary btn-user btn-block" id="createCurr">
-                    Create Curriculum
+                  <div class="form-group">
+                    <label for="">Content</label>
+                    <textarea
+                      rows="10"
+                      type="text"
+                      class="form-control form-control-user"
+                      id="content-input"
+                    ></textarea>
+                  </div>
+                  <a
+                    href="#"
+                    class="btn btn-primary btn-user btn-block"
+                    id="createCurr"
+                  >
+                    Create Forum
                   </a>
                 </div>
                 <hr />
@@ -527,38 +485,55 @@
     <!-- Script to set values to view -->
     <script type="module">
       import { InputFacade } from "../facade/InputFacade.js";
+      import { ForumController } from "../controller/forumController.js";
+      import { SessionMappingController } from "../controller/sessionMappingController.js";
+      import { CourseController } from "../controller/courseController.js";
+      import { ClassController } from "../controller/classController.js";
 
-      window.onload = () => {
-        var name = document.getElementById("username");
-        name.innerHTML = localStorage.getItem("username");
-      };
+      $(document).ready(function () {
+        window.onload = async () => {
+          var name = document.getElementById("username");
+          name.innerHTML = localStorage.getItem("username");
+          
+          let role = localStorage.getItem("role");
+          let urlQuery = new URLSearchParams(window.location.search);
+          let classId = urlQuery.get("classId");
+          console.log(classId)
 
-      document
-        .getElementById("createCurr")
-        .addEventListener("click", async () => {
-          console.log("test");
-          await new InputFacade().createCurriculum();
-        });
+          let c = await ClassController.getClass(classId)
+          console.log(c)
+          let course = await CourseController.getCourse(c.courseCode)
+          console.log(course)
+  
+          let classInput = document.getElementById("classCode");
+          classInput.setAttribute("value", classId)
+          let courseInput = document.getElementById("courseId");
+          courseInput.setAttribute("value", course.courseId + " - " + course.name)
+          
+          let sess = await SessionMappingController.getAllByCourseId(c.courseCode);
+          let select = document.getElementById("sessionId");
+            for (let i = 0; i < sess.length; i++) {
+              var opt = document.createElement("option");
+              opt.value = sess[i].sessionId;
+              opt.innerHTML = sess[i].sessionNumber;
+              select.appendChild(opt);
+            }
 
-      
+          document
+            .getElementById("createCurr")
+            .addEventListener("click", async () => {
+              let hide = false
+              if(role == "Lecturer"){
+                hide = confirm("Do you want to hide the reply?");
+              }
+              console.log(hide)
+              await new InputFacade().createForum(classId, hide);
+            });
+        }
+      })
+
     </script>
 
     <!-- Page level custom scripts -->
-    <script>
-      $(document).ready(function () {
-        $(".addLO").click(function () {
-          var fieldHTML =
-            '<div class="input-group courses">' +
-            $(".coursesCopy").html() +
-            "</div>";
-          $("body").find(".courses:last").after(fieldHTML);
-        });
-
-        //remove fields group
-        $("body").on("click", ".remove", function () {
-          $(this).parents(".courses").remove();
-        });
-      });
-    </script>
   </body>
 </html>

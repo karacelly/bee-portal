@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Bee Portal Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="../assets/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <div class="header"></div>
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Search -->
+            <form
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 small"
+                  placeholder="Search for..."
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="searchDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                  aria-labelledby="searchDropdown"
+                >
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control bg-light border-0 small"
+                        placeholder="Search for..."
+                        aria-label="Search"
+                        aria-describedby="basic-addon2"
+                      />
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+
+              <!-- Nav Item - Alerts -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="alertsDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell fa-fw"></i>
+                  <!-- Counter - Alerts -->
+                  <span class="badge badge-danger badge-counter">3+</span>
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="alertsDropdown"
+                >
+                  <h6 class="dropdown-header">Alerts Center</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 12, 2019</div>
+                      <span class="font-weight-bold"
+                        >A new monthly report is ready to download!</span
+                      >
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-success">
+                        <i class="fas fa-donate text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 7, 2019</div>
+                      $290.29 has been deposited into your account!
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 2, 2019</div>
+                      Spending Alert: We've noticed unusually high spending for
+                      your account.
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item text-center small text-gray-500"
+                    href="#"
+                    >Show All Alerts</a
+                  >
+                </div>
+              </li>
+
+              <!-- Nav Item - Messages -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="messagesDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-envelope fa-fw"></i>
+                  <!-- Counter - Messages -->
+                  <span class="badge badge-danger badge-counter">7</span>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="messagesDropdown"
+                >
+                  <h6 class="dropdown-header">Message Center</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img
+                        class="rounded-circle"
+                        src="../assets/images/undraw_profile_1.svg"
+                        alt="..."
+                      />
+                      <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                      <div class="text-truncate">
+                        Hi there! I am wondering if you can help me with a
+                        problem I've been having.
+                      </div>
+                      <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img
+                        class="rounded-circle"
+                        src="../assets/images/undraw_profile_2.svg"
+                        alt="..."
+                      />
+                      <div class="status-indicator"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">
+                        I have the photos that you ordered last month, how would
+                        you like them sent to you?
+                      </div>
+                      <div class="small text-gray-500">Jae Chun · 1d</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img
+                        class="rounded-circle"
+                        src="../assets/images/undraw_profile_3.svg"
+                        alt="..."
+                      />
+                      <div class="status-indicator bg-warning"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">
+                        Last month's report looks great, I am very happy with
+                        the progress so far, keep up the good work!
+                      </div>
+                      <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img
+                        class="rounded-circle"
+                        src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                        alt="..."
+                      />
+                      <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">
+                        Am I a good boy? The reason I ask is because someone
+                        told me that people say this to all dogs, even if they
+                        aren't good...
+                      </div>
+                      <div class="small text-gray-500">
+                        Chicken the Dog · 2w
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item text-center small text-gray-500"
+                    href="#"
+                    >Read More Messages</a
+                  >
+                </div>
+              </li>
+
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span
+                    id="username"
+                    class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    >Douglas McGee</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="../assets/images/undraw_profile.svg"
+                  />
+                </a>
+                <!-- Dropdown - User Information -->
+                <div
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#logoutModal"
+                  >
+                    <i
+                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                    ></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="d-flex flex-column" data-aos="fade-up">
+              <header class="section-header d-flex justify-content-start ml-5">
+                <h3 class="m-0 font-weight-bold text-primary">Forum Thread</h3>
+              </header>
+              <div
+                id="forum-thread-body"
+                class="d-flex card w-100 justify-content-start"
+              >
+                <template id="forum-thread-template">
+                  <div id="thread-content-body" class="d-flex ml-5 flex-row">
+                    <div
+                      class="d-flex ml-3 mr-3 flex-column justify-content-center align-items-center"
+                    >
+                      <div
+                        class="d-flex flex-column justify-content-center align-items-center"
+                      >
+                        <p id="forum-user-name" class="p-0 m-0">Kesya</p>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5
+                        id="forum-title"
+                        class="card-title m-0 font-weight-bold text-primary"
+                      >
+                        Special title treatment
+                      </h5>
+                      <p id="forum-content" class="card-text">
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    id="edit-button-body"
+                    class="mr-3 mt-3 m-3 flex-fill align-items-end"
+                  >
+                    <p id="forum-date" style="font-size: smaller">
+                      09 Dec 2021, 10:39 GMT+7
+                    </p>
+                  </div>
+                </template>
+              </div>
+
+              <template id="edit-button-template">
+                <i id="edit-forum-thread-btn" class="fas fa-edit"></i>
+                <i id="remove-forum-thread-btn" class="fas fa-trash"></i>
+              </template>
+
+              <header
+                class="section-header d-flex justify-content-start ml-5 mt-5"
+              >
+                <h5 class="m-0 font-weight-bold text-primary">
+                  Forum Discussion
+                </h5>
+              </header>
+
+              <div
+                id="forum-discuss-post-body"
+                class="d-flex card w-100 justify-content-start"
+              >
+                <template id="forum-discuss-post-template">
+                  <div class="d-flex ml-5 flex-row m-3">
+                    <div
+                      class="d-flex ml-3 mr-3 flex-column justify-content-center align-items-center"
+                    >
+                      <div
+                        class="d-flex flex-column justify-content-center align-items-center"
+                      >
+                        <p id="forum-discuss-post-user-name" class="p-0 m-0">
+                          Kesya
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1"
+                          >Discussion</label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="discussion-post-content"
+                          rows="5"
+                          placeholder="Write anything you want to discuss about current thread"
+                        ></textarea>
+                      </div>
+                      <a id="discussBtn" href="#" class="btn btn-primary"
+                        >Discuss</a
+                      >
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Forum Discussion Template -->
+              <div id="forum-discussion-body" class="d-flex flex-column">
+                <template id="forum-discussion-template">
+                  <div class="d-flex card w-100 justify-content-start">
+                    <div class="d-flex ml-5 flex-row m-3 align-items-start">
+                      <div
+                        class="d-flex ml-3 mr-3 flex-column justify-content-center align-items-center"
+                      >
+                        <div
+                          class="d-flex flex-column justify-content-start align-items-center"
+                        >
+                          <p id="forum-discussion-user-name" class="p-0 m-0">
+                            Kesya
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div id="forum-discussion-content-body">
+                          <p id="forum-discussion-content" class="card-text">
+                            With supporting text below as a natural lead-in to
+                            additional content.
+                          </p>
+                        </div>
+                        <div
+                          id="forum-discussion-reply-body"
+                          class="d-flex flex-column"
+                        ></div>
+
+                        <div id="replyBtn" class="pe-auto">
+                          <i class="fas fa-reply"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      id="edit-button-body"
+                      class="d-flex flex-column mr-3 mt-3 align-items-end"
+                    >
+                      <p
+                        id="forum-discussion-date"
+                        class="p-0 m-0"
+                        style="font-size: smaller"
+                      >
+                        09 Dec 2021, 10:39 GMT+7
+                      </p>
+                    </div>
+                  </div>
+                </template>
+                <!-- END Forum Discussion Template -->
+
+                <!-- Forum Discussion Reply Template -->
+                <template id="forum-discussion-reply-template">
+                  <div class="d-flex card w-100 justify-content-start">
+                    <div
+                      id="edit-button-body"
+                      class="d-flex flex-column mr-3 mt-3 align-items-end"
+                    >
+                      <p
+                        id="forum-discussion-reply-date"
+                        class="p-0 m-0"
+                        style="font-size: smaller"
+                      >
+                        09 Dec 2021, 10:39 GMT+7
+                      </p>
+                    </div>
+                    <div class="d-flex flex-row">
+                      <div
+                        class="d-flex ml-3 mr-3 flex-column justify-content-center align-items-center"
+                      >
+                        <div
+                          class="d-flex flex-column justify-content-center align-items-center"
+                        >
+                          <p
+                            id="forum-discussion-reply-user-name"
+                            class="p-0 m-0"
+                          >
+                            Kesya
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div id="forum-discussion-content-body">
+                          <p
+                            id="forum-discussion-reply-content"
+                            class="card-text"
+                          >
+                            With supporting text below as a natural lead-in to
+                            additional content.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                <!-- END Forum Discussion Reply Template -->
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Bee Portal by SY</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script to set values to view -->
+    <script type="module">
+      import { ForumController } from "../controller/forumController.js";
+      import { dateTimeToString } from "../assets/js/utils.js";
+      import { UserController } from "../controller/userController.js";
+
+      window.onload = async () => {
+        var name = document.getElementById("username");
+        name.innerHTML = localStorage.getItem("username");
+
+        let currUserID = localStorage.getItem("user");
+
+        let urlQuery = new URLSearchParams(window.location.search);
+        let forumId = urlQuery.get("forumId");
+
+        console.log(forumId);
+
+        let f = await ForumController.getForum(forumId);
+        console.log(f);
+
+        let editButtonsTemplate = document.getElementById(
+          "edit-button-template"
+        );
+
+        let forumThreadBody = document.querySelector("#forum-thread-body");
+        let forumThreadTemplate = document.getElementById(
+          "forum-thread-template"
+        );
+        let forumThreadClone = forumThreadTemplate.content.cloneNode(true);
+
+        let forumThreadTitle = forumThreadClone.querySelector("#forum-title");
+        forumThreadTitle.textContent = f.title;
+
+        let forumThreadContent =
+          forumThreadClone.querySelector("#forum-content");
+        forumThreadContent.textContent = f.content;
+
+        let forumThreadDate = forumThreadClone.querySelector("#forum-date");
+        forumThreadDate.textContent = dateTimeToString(f.postedDate);
+
+        let forumUser = await UserController.getUser(f.userId);
+        let forumThreadName =
+          forumThreadClone.querySelector("#forum-user-name");
+        forumThreadName.textContent = forumUser.name;
+        console.log(forumUser);
+
+        if (forumUser.userId == currUserID) {
+          let editButtonsBody =
+            forumThreadClone.querySelector("#edit-button-body");
+          let editButtonsClone = editButtonsTemplate.content.cloneNode(true);
+
+          let editThreadBtn = editButtonsClone.querySelector(
+            "#edit-forum-thread-btn"
+          );
+          let removeThreadBtn = editButtonsClone.querySelector(
+            "#remove-forum-thread-btn"
+          );
+
+          let threadContentBody = forumThreadClone.querySelector(
+            "#thread-content-body"
+          );
+          editThreadBtn.addEventListener("click", () => {
+            while (threadContentBody.firstChild) {
+              threadContentBody.firstChild.remove();
+            }
+
+            let postTemplate = document.getElementById(
+              "forum-discuss-post-template"
+            );
+            let postClone = postTemplate.content.cloneNode(true);
+
+            let postName = postClone.querySelector(
+              "#forum-discuss-post-user-name"
+            );
+            postName.textContent = forumUser.name;
+
+            let updateTextArea = postClone.querySelector("textarea");
+            updateTextArea.value = f.content;
+
+            let updateBtn = postClone.querySelector("#discussBtn");
+            updateBtn.textContent = "Update";
+            updateBtn.addEventListener("click", async () => {
+              if (updateTextArea.value.trim() != "") {
+                let success = false;
+                success = await ForumController.updateForum(
+                  forumId,
+                  updateTextArea.value
+                );
+                if (success === true) {
+                  window.location.reload();
+                  return false;
+                } else {
+                  alert("Failed to Update Forum Thread");
+                }
+              }
+            });
+
+            threadContentBody.appendChild(postClone);
+          });
+
+          removeThreadBtn.addEventListener("click", async () => {
+            let success = await ForumController.deleteForum(forumId);
+            if (success === false) alert("Failed to Remove Forum Thread");
+          });
+
+          editButtonsBody.appendChild(editButtonsClone);
+        }
+
+        forumThreadBody.appendChild(forumThreadClone);
+
+        //Forum Post
+        let postBody = document.querySelector("#forum-discuss-post-body");
+        let postTemplate = document.getElementById(
+          "forum-discuss-post-template"
+        );
+        let postClone = postTemplate.content.cloneNode(true);
+
+        let postName = postClone.querySelector("#forum-discuss-post-user-name");
+        postName.textContent = localStorage.getItem("username");
+
+        const postContent = postClone.querySelector("#discussion-post-content");
+
+        let postBtn = postClone.querySelector("#discussBtn");
+        postBtn.addEventListener("click", async () => {
+          if (postContent.value.trim() != "") {
+            let success = false;
+            success = await ForumController.replyForum(
+              postContent.value,
+              currUserID,
+              forumId
+            );
+            if (success === true) {
+              window.location.reload();
+              return false;
+            } else {
+              alert("Failed to Post Discussion");
+            }
+          }
+        });
+
+        postBody.appendChild(postClone);
+
+        //Forum Discussions
+        let forumDiscussions = await ForumController.getAllReplyByForumId(
+          forumId
+        );
+
+        if (forumDiscussions) {
+          forumDiscussions.map(async (fd) => {
+            let fdBody = document.querySelector("#forum-discussion-body");
+            let fdTemplate = document.getElementById(
+              "forum-discussion-template"
+            );
+            let fdClone = fdTemplate.content.cloneNode(true);
+
+            let fdContent = fdClone.querySelector("#forum-discussion-content");
+            fdContent.textContent = fd.content;
+
+            let user = await UserController.getUser(fd.userId);
+
+            let fdName = fdClone.querySelector("#forum-discussion-user-name");
+            fdName.textContent = user.name;
+
+            let fdReplyBtn = fdClone.querySelector("#replyBtn");
+            let fdrBody = fdClone.querySelector("#forum-discussion-reply-body"); //Forum Discussion Reply Body
+
+            let editFdBtnBody = fdClone.querySelector(
+              "#forum-discussion-content-body"
+            );
+
+            fdReplyBtn.addEventListener("click", () => {
+              let postTemplate = document.getElementById(
+                "forum-discuss-post-template"
+              );
+              let postClone = postTemplate.content.cloneNode(true);
+
+              let postName = postClone.querySelector(
+                "#forum-discuss-post-user-name"
+              );
+              postName.textContent = localStorage.getItem("username");
+
+              const postContent = postClone.querySelector(
+                "#discussion-post-content"
+              );
+
+              let postBtn = postClone.querySelector("#discussBtn");
+              postBtn.addEventListener("click", async () => {
+                if (postContent.value.trim() != "") {
+                  let success = false;
+                  success = await ForumController.replyForum(
+                    postContent.value,
+                    currUserID,
+                    fd.forumId
+                  );
+                  if (success === true) {
+                    window.location.reload();
+                    return false;
+                  } else {
+                    alert("Failed to Post Discussion");
+                  }
+                }
+              });
+
+              fdrBody.appendChild(postClone);
+            });
+
+            console.log("fd");
+            console.log(fd);
+            let forumDiscussionReplies = [];
+            forumDiscussionReplies = await ForumController.getAllReplyByForumId(
+              fd.replyId
+            );
+            if (forumDiscussionReplies.length > 0) {
+              forumDiscussionReplies.map(async (fdr) => {
+                let fdrTemplate = document.getElementById(
+                  "forum-discussion-reply-template"
+                );
+                let fdrClone = fdrTemplate.content.cloneNode(true);
+
+                let fdrContent = fdrClone.querySelector(
+                  "#forum-discussion-reply-content"
+                );
+                fdrContent.textContent = fdr.content;
+
+                let user = await UserController.getUser(fdr.userId);
+
+                let fdrName = fdrClone.querySelector(
+                  "#forum-discussion-reply-user-name"
+                );
+                fdrName.textContent = user.name;
+
+                let editFdBtnBody = fdrClone.querySelector(
+                  "#forum-discussion-content-body"
+                );
+
+                if (f.hideReply == false || fdr.userID == currUserID)
+                  fdrBody.appendChild(fdrClone);
+              });
+            }
+
+            if (f.hideReply == false || fd.userID == currUserID)
+              fdBody.appendChild(fdClone);
+          });
+        }
+      };
+    </script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/header.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+  </body>
+</html>

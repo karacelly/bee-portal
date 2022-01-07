@@ -38,14 +38,7 @@
         <div id="content">
           <!-- Topbar -->
           <nav
-            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
             <button
@@ -57,15 +50,7 @@
 
             <!-- Topbar Search -->
             <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             >
               <div class="input-group">
                 <input
@@ -100,12 +85,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                   aria-labelledby="searchDropdown"
                 >
                   <form class="form-inline mr-auto w-100 navbar-search">
@@ -144,11 +124,7 @@
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="alertsDropdown"
                 >
                   <h6 class="dropdown-header">Alerts Center</h6>
@@ -213,11 +189,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="messagesDropdown"
                 >
                   <h6 class="dropdown-header">Message Center</h6>
@@ -325,11 +297,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
                   <a class="dropdown-item" href="#">
@@ -363,7 +331,16 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div class="container-fluid" id="">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">All Class</h1>
+            </div>
 
+            <div class="row"></div>
+          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -428,9 +405,68 @@
 
     <!-- Script to set values to view -->
     <script type="module">
-      window.onload = () => {
+      import { ClassController } from "../controller/classController.js";
+      import { CourseController } from "../controller/courseController.js";
+      import { UserController } from "../controller/userController.js";
+
+      window.onload = async () => {
         var name = document.getElementById("username");
         name.innerHTML = localStorage.getItem("username");
+
+        let role = localStorage.getItem("role");
+        let c;
+        if (role == "Administrative Department") {
+          c = await ClassController.getAllClasses();
+        } else if (role == "Lecturer") {
+          c = await ClassController.getLecturerClasses(
+            localStorage.getItem("user")
+          );
+        }
+        console.log(c);
+
+        if (c) {
+          for (let i = 0; i < c.length; i++) {
+            let one = await CourseController.getCourse(c[i].courseCode);
+            let lect = await UserController.getUser(c[i].lecturerId);
+
+            console.log(one);
+            let html = `<div class="col-lg-3">
+
+                              <div class="card shadow mb-4 .border-left-info">
+                                <div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-primary">${one.courseId} - ${one.name}</h6>
+                                </div>
+                                <div class="card-body">
+                                  <div class="pb-2">
+                                    <a href="#" class="btn btn-info btn-circle btn-sm">
+                                      <i class="fas fa-bookmark"></i>
+                                    </a> ${lect.name}
+                                  </div>
+                                  <div>
+                                    <a href="#" class="btn btn-info btn-circle btn-sm">
+                                      <i class="fas fa-book"></i>
+                                    </a>   ${c[i].classId}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>`;
+
+            document
+              .querySelector(".row")
+              .insertAdjacentHTML("beforeend", html);
+          }
+
+          if (role != "Administrative Department") {
+            let cards = document.getElementsByClassName("card");
+            for (let i = 0; i < cards.length; i++) {
+              cards[i].addEventListener("click", () => {
+                window.location.assign(
+                  `./viewClassDetail.html?classId=${c[i].classId}`
+                );
+              });
+            }
+          }
+        }
       };
     </script>
 

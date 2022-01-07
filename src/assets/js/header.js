@@ -1,8 +1,12 @@
 $(function () {
   let role = localStorage.getItem("role");
   if (role == "Academic Department") {
-    $(".header").load("acadHeader.html");
+    $(".header").load("./headers/acadHeader.html");
   } else if (role == "Administrative Department") {
-    $(".header").load("adminHeader.html");
+    $(".header").load("./headers/adminHeader.html");
+  } else if (role == "Lecturer") {
+    $(".header").load("./headers/lecturerHeader.html");
+  } else if (role == "Student") {
+    $(".header").load("./headers/studentHeader.html");
   }
 });

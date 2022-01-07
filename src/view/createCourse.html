@@ -579,7 +579,7 @@
 
     <!-- Script to set values to view -->
     <script type="module">
-      import { inputFacade } from "../facade/inputFacade.js";
+      import { InputFacade } from "../facade/InputFacade.js";
 
       window.onload = () => {
         var name = document.getElementById("username");
@@ -590,7 +590,7 @@
         .getElementById("createCourse")
         .addEventListener("click", async () => {
           console.log("testa");
-          await new inputFacade().createCourse();
+          await new InputFacade().createCourse();
         });
     </script>
 

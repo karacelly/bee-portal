@@ -38,14 +38,7 @@
         <div id="content">
           <!-- Topbar -->
           <nav
-            class="
-              navbar navbar-expand navbar-light
-              bg-white
-              topbar
-              mb-4
-              static-top
-              shadow
-            "
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
             <button
@@ -57,15 +50,7 @@
 
             <!-- Topbar Search -->
             <form
-              class="
-                d-none d-sm-inline-block
-                form-inline
-                mr-auto
-                ml-md-3
-                my-2 my-md-0
-                mw-100
-                navbar-search
-              "
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             >
               <div class="input-group">
                 <input
@@ -100,12 +85,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    p-3
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                   aria-labelledby="searchDropdown"
                 >
                   <form class="form-inline mr-auto w-100 navbar-search">
@@ -144,11 +124,7 @@
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="alertsDropdown"
                 >
                   <h6 class="dropdown-header">Alerts Center</h6>
@@ -213,11 +189,7 @@
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="
-                    dropdown-list dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="messagesDropdown"
                 >
                   <h6 class="dropdown-header">Message Center</h6>
@@ -325,11 +297,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-right
-                    shadow
-                    animated--grow-in
-                  "
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
                   <a class="dropdown-item" href="#">
@@ -363,7 +331,103 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Create New Class</h1>
+            </div>
 
+            <!-- Content Row -->
+
+            <div class="row">
+              <div class="container">
+                <hr />
+                <div class="user">
+                  <div class="form-group">
+                    <div>
+                      <label for="courseName">Class Code</label>
+                      <input
+                        type="name"
+                        class="form-control form-control-user"
+                        id="classId"
+                        placeholder="ex. LM01, LQ01"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Class Schedule</label>
+                    <div class="row">
+                      <label class="col-sm-1" for="day">Day</label>
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <select
+                          class="form-control form-control-user"
+                          name="day"
+                          id="day"
+                        >
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                      <label class="col-sm-1" for="shift">Shift</label>
+                      <div class="col-sm-5">
+                        <select
+                          class="form-control form-control-user"
+                          name="shift"
+                          id="shift"
+                        >
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="5">6</option>
+                          <option value="5">7</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <label for="courseName">Course Code</label>
+                      <select
+                        class="form-control form-control-user"
+                        id="courseId"
+                      ></select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Lecturer</label>
+                    <select
+                      class="form-control form-control-user"
+                      id="lecturerId"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Students</label>
+                    <select
+                      class="form-control form-control-user"
+                      name="studentIds"
+                      id="studentIds"
+                      multiple
+                    ></select>
+                  </div>
+                  <a
+                    href="#"
+                    class="btn btn-primary btn-user btn-block"
+                    id="createClass"
+                  >
+                    Create Class
+                  </a>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -428,10 +492,71 @@
 
     <!-- Script to set values to view -->
     <script type="module">
+      import { InputFacade } from "../facade/InputFacade.js";
+      import { UserController } from "../controller/userController.js";
+      import { ClassController } from "../controller/classController.js";
+      import { CourseController } from "../controller/courseController.js";
+
       window.onload = () => {
         var name = document.getElementById("username");
         name.innerHTML = localStorage.getItem("username");
+
+        let courses = CourseController.getAllCourses();
+        courses
+          .then((result) => {
+            console.log(result);
+
+            let select = document.getElementById("courseId");
+            for (let i = 0; i < result.length; i++) {
+              var opt = document.createElement("option");
+              opt.value = result[i].courseId;
+              opt.innerHTML = result[i].courseId + " - " + result[i].name;
+              select.appendChild(opt);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+        let studs = UserController.getAllStudents();
+        studs
+          .then((result) => {
+            console.log(result);
+
+            let select = document.getElementById("studentIds");
+            for (let i = 0; i < result.length; i++) {
+              var opt = document.createElement("option");
+              opt.value = result[i].studentId;
+              opt.innerHTML = result[i].studentId + " - " + result[i].name;
+              select.appendChild(opt);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+        let lects = UserController.getAllLecturers();
+        lects
+          .then((result) => {
+            let select = document.getElementById("lecturerId");
+            for (let i = 0; i < result.length; i++) {
+              var opt = document.createElement("option");
+              opt.value = result[i].userId;
+              opt.innerHTML = result[i].lecturerId + " - " + result[i].name;
+              select.appendChild(opt);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       };
+
+      document
+        .getElementById("createClass")
+        .addEventListener("click", async () => {
+          console.log("testa");
+          await new InputFacade().createClass();
+        });
     </script>
 
     <!-- Bootstrap core JavaScript-->

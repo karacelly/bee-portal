@@ -580,7 +580,7 @@
 
     <!-- Script to set values to view -->
     <script type="module">
-      import { inputFacade } from "../facade/inputFacade.js";
+      import { InputFacade } from "../facade/InputFacade.js";
       import { CourseController } from "../controller/courseController.js"
 
       $(document).ready(function () {
@@ -648,7 +648,7 @@
           .getElementById("updateCourse")
           .addEventListener("click", async () => {
             console.log("test");
-            await new inputFacade().updateCourse();
+            await new InputFacade().updateCourse();
           });
       });
 
