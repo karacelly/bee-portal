@@ -31,15 +31,18 @@ export class Assignment {
     this.assignmentQuestion = assignmentQuestion;
   }
 
-  static async insert() {
+  async insert() {
     try {
+      console.log(
+        new Timestamp(new Date(this.deadlineDate).getTime() / 1000, 0)
+      );
       const docIns = await addDoc(
         collection(Database.getInstance(), "assignment"),
         {
           classId: this.classId,
           assignmentType: this.assignmentType,
           deadlineDate: new Timestamp(
-            new Date(this.submissionDate).getTime() / 1000,
+            new Date(this.deadlineDate).getTime() / 1000,
             0
           ),
           assignmentQuestion: this.assignmentQuestion,
